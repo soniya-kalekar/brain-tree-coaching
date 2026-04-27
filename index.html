@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DemoTuition Academy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+}
+
+/* HEADER */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:#0b4dbb;
+color:white;
+flex-wrap:wrap;
+}
+
+nav{
+display:flex;
+gap:20px;
+flex-wrap:nowrap;
+white-space:nowrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+}
+
+nav a:hover{
+text-decoration:underline;
+}
+
+/* PAGE SYSTEM */
+
+.page{display:none;}
+.active{display:block;}
+
+/* HERO BANNER */
+
+.hero{
+position:relative;
+height:450px;
+overflow:hidden;
+background:#0b4dbb;
+}
+
+.slider{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:contain;
+object-position:center;
+opacity:0;
+animation:fade 12s infinite;
+}
+
+.slide:nth-child(1){animation-delay:0s;}
+.slide:nth-child(2){animation-delay:4s;}
+.slide:nth-child(3){animation-delay:8s;}
+
+@keyframes fade{
+0%{opacity:0;}
+10%{opacity:1;}
+30%{opacity:1;}
+40%{opacity:0;}
+100%{opacity:0;}
+}
+
+/* TEXT ON BANNER */
+
+.hero-text{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+color:white;
+text-align:center;
+background:rgba(0,0,0,0.5);
+padding:25px;
+border-radius:10px;
+}
+
+.hero-text h2{margin:0;font-size:32px;}
+.hero-text p{margin:10px 0;}
+
+.hero-text button{
+padding:10px 20px;
+border:none;
+background:#ffcc00;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* COURSES */
+
+.courses{
+padding:40px;
+text-align:center;
+}
+
+.course-container{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+
+.card{
+background:linear-gradient(135deg,#2b6cff,#1c3eff);
+color:white;
+padding:25px;
+width:220px;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+transition:0.3s;
+}
+
+.card:hover{transform:translateY(-5px);}
+
+/* ABOUT */
+
+.about{
+padding:40px;
+background:#eef2ff;
+text-align:center;
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+padding:40px;
+text-align:center;
+position:relative;
+max-width:600px;
+margin:auto;
+}
+
+.review-slider{width:100%;overflow:hidden;position:relative;}
+.review-track{display:flex;width:100%;transition:transform 0.5s ease;}
+
+.review{
+min-width:100%;
+box-sizing:border-box;
+background:#f4f4f4;
+padding:20px;
+border-radius:8px;
+}
+
+/* arrows */
+
+.arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:30px;
+cursor:pointer;
+background:white;
+width:40px;
+height:40px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.arrow-left{left:-10px;}
+.arrow-right{right:-10px;}
+
+/* WHY CHOOSE US */
+
+.why-container{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.why-box{
+width:220px;
+padding:20px;
+background:white;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.icon{font-size:40px;}
+
+/* CONTACT */
+
+.contact{
+padding:40px;
+text-align:center;
+}
+
+.contact-box{
+max-width:400px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:20px;
+background:#0b4dbb;
+color:white;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+cursor:pointer;
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+header{
+flex-direction:column;
+text-align:center;
+}
+
+nav{
+justify-content:center;
+margin-top:10px;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.course-container{
+flex-direction:column;
+align-items:center;
+}
+
+.card{width:85%;}
+
+.hero{height:320px;}
+
+.hero-text h2{font-size:22px;}
+.hero-text p{font-size:14px;}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1><center>DemoTuition Academy</center></h1>
+
+<nav>
+<a onclick="showPage('home')">Home</a>
+<a onclick="showPage('coursesPage')">Courses</a>
+<a onclick="showPage('aboutPage')">About</a>
+<a onclick="showPage('admissionPage')">Admission</a>
+<a onclick="showPage('contactPage')">Contact</a>
+</nav>
+</header>
+
+<!-- HOME -->
+<div id="home" class="page active">
+
+<section class="hero">
+<div class="slider">
+<img src="t1.jpeg" class="slide">
+<img src="t2.jpeg" class="slide">
+<img src="t3.jpeg" class="slide">
+</div>
+
+<div class="hero-text">
+<h2>True Mentorship & Smart Learning</h2>
+<p>Prepare for IIT-JEE, NEET & Board Exams with expert teachers.</p>
+<button onclick="showPage('coursesPage')">Explore Courses</button>
+</div>
+</section>
+
+<section class="courses">
+<h2>Our Courses</h2>
+<div class="course-container">
+<div class="card"><h3>IIT-JEE</h3><p>Physics, Chemistry & Maths</p></div>
+<div class="card"><h3>NEET</h3><p>Biology focused learning</p></div>
+<div class="card"><h3>Board Exams</h3><p>Class 10 & 12 preparation</p></div>
+</div>
+</section>
+
+<section class="about">
+<h2>About Our Institute</h2>
+<p>We provide structured learning, concept clarity and regular testing.</p>
+</section>
+
+<section class="testimonials">
+<h2>What Students Say</h2>
+
+<div class="arrow arrow-left" onclick="prevReview()">‹</div>
+<div class="arrow arrow-right" onclick="nextReview()">›</div>
+
+<div class="review-slider">
+<div class="review-track" id="reviewTrack">
+
+<div class="review">
+<p>"Best teacher and amazing guidance."</p>
+<h4>— Shriya</h4>
+</div>
+
+<div class="review">
+<p>"Concepts become very easy."</p>
+<h4>— Soniya</h4>
+</div>
+
+<div class="review">
+<p>"Mock tests improved confidence."</p>
+<h4>— Sakshi</h4>
+</div>
+
+</div>
+</div>
+</section>
+</div>
+
+<!-- COURSES -->
+<div id="coursesPage" class="page">
+<section class="courses">
+<h2>Our Courses</h2>
+
+<div class="course-container">
+<div class="card"><h3>IIT-JEE</h3><p>Physics, Chemistry & Maths</p></div>
+<div class="card"><h3>NEET</h3><p>Biology focused learning</p></div>
+<div class="card"><h3>Board</h3><p>Class 10 & 12</p></div>
+</div>
+
+</section>
+</div>
+
+<!-- ABOUT (FIXED RESULTS HERE) -->
+<div id="aboutPage" class="page">
+
+<section class="about">
+<h2>About Our Institute</h2>
+<p>Our academy focuses on concept clarity, structured learning and mentorship.</p>
+</section>
+
+<section class="about">
+<h2>Our Results</h2>
+<p>
+<b>2025:</b> 85% students above 90%<br>
+<b>2024:</b> 40% increase in selections<br>
+<b>2023:</b> Top 1000 rankers achieved
+</p>
+</section>
+
+</div>
+
+<!-- ADMISSION (UPDATED) -->
+<div id="admissionPage" class="page">
+
+<section class="contact">
+<h2>Admission Open</h2>
+
+<div class="contact-box">
+
+<h3>Fees Structure</h3>
+<p>IIT-JEE: ₹30,000/year</p>
+<p>NEET: ₹30,000/year</p>
+<p>Board: ₹15,000/year</p>
+
+<h3>Infrastructure</h3>
+<p>Smart classrooms, test labs, doubt sessions, library support</p>
+
+
+
+<!-- <h3>Admission Form</h3>
+<input type="text" placeholder="Student Name"><br><br>
+<input type="text" placeholder="Phone Number"><br><br>
+<textarea placeholder="Message"></textarea><br><br>
+<button>Submit</button> -->
+
+<br><br>
+<p>OR</p>
+<a href="https://wa.me/919999999999">Contact on WhatsApp</a>
+
+</div>
+</section>
+
+</div>
+
+<!-- CONTACT -->
+<div id="contactPage" class="page">
+
+<section class="contact">
+<h2>Contact Us</h2>
+
+<div class="contact-box">
+<p><b>Phone:</b> +91 99999 99999</p>
+<p><b>Email:</b> demoacademy@gmail.com</p>
+<p><b>Address:</b> Malad, Maharashtra</p>
+</div>
+
+</section>
+
+</div>
+
+<a href="https://wa.me/919999999999">
+<img src="whatapp.jfif" class="whatsapp">
+</a>
+
+<footer>
+<p>© 2026 DemoTuition Academy</p>
+</footer>
+
+<script>
+
+function showPage(page){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(page).classList.add("active");
+}
+
+let index=0;
+const track=document.getElementById("reviewTrack");
+const total=track.children.length;
+
+function update(){
+track.style.transform="translateX(-"+(index*100)+"%)";
+}
+
+function nextReview(){
+index=(index+1)%total;
+update();
+}
+
+function prevReview(){
+index=(index-1+total)%total;
+update();
+}
+
+</script>
+
+</body>
+</html>
